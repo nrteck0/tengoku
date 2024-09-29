@@ -5,9 +5,9 @@ function WebnovelPage() {
   const { id } = useParams();
   // In a real app, you'd fetch the webnovel data based on the ID
   const webnovel = {
-    title: 'A New Order',
+    title: 'The New Order',
     coverArt: 'https://cdn.midjourney.com/884f0fa1-68fa-42c6-90d3-92f452a551aa/0_0.png',
-    synopsis: 'A boy from the streets of New Tokyo and a girl from the Outer Circle. As their paths cross, what does fate have in store for them?',
+    synopsis: 'A boy from the streets of New Tokyo and a girl from the Outer Circle. Their threads of fate intertwined.',
     chapters: [
       { id: 1, title: 'The Sky of Death', thumbnail: 'https://cdn.midjourney.com/06ae7116-7ffc-400a-a960-0965120406cb/0_3.png' },
       { id: 2, title: 'The Prodigy', thumbnail: 'https://cdn.midjourney.com/e7c6ff04-74b3-45f9-b0eb-6db7ceb92721/0_1.png' },

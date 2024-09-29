@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 
 function BackArrowIcon() {
   return (
@@ -25,7 +25,7 @@ const chapterContent = {
       { type: 'image', src: 'https://cdn.midjourney.com/4102051c-c796-4d16-81d2-9c3f33460eac/0_1.png' },
       { type: 'text', content: `The orange sky was a reminder of death. The smog in New Tokyo was known for killing its citizens, making goggles and masks necessary for daily life. The boy had already lost his throat to the smog, and he was not about to lose his eyes. Usually, that would be the price of going out during the burning hours. He fastened his goggles.` },
       { type: 'image', src: 'https://cdn.midjourney.com/19e2d3d1-958d-4b68-ac1a-a22987439b00/0_3.png' },
-      { type: 'text', content: `It was a bright day, but not a soul could be found outside. Shibuya-01 was completely empty. The boy neatly tucked a nondescript bag into a crevice on the floor. He did the same thing several times.
+      { type: 'text', content: `It was a bright day, but not a soul could be found outside. Shibuya-01 was completely empty. The boy neatly tucked a nondescript bag into a crevice on the floor. He did the same thing several times in different places.
 
 "Om, shanti, shanti."` },
       { type: 'image', src: 'https://cdn.midjourney.com/06ae7116-7ffc-400a-a960-0965120406cb/0_3.png' },
@@ -99,51 +99,54 @@ function ReadingInterface() {
   const [chapterTitle, setChapterTitle] = useState('');
   const [chapterBanner, setChapterBanner] = useState('');
   const chapterNumber = parseInt(chapter, 10);
+  const location = useLocation();
 
   useEffect(() => {
     const chapterData = chapterContent[chapter] || { title: 'Chapter Not Found', content: [], banner: '' };
     setChapterTitle(chapterData.title);
     setContent(chapterData.content);
     setChapterBanner(chapterData.banner || chapterData.thumbnail);
-  }, [chapter]);
-
-  return (
-    <div className="reading-interface">
-      <div className="chapter-banner">
-        <img src={chapterBanner} alt={chapterTitle} />
-        <Link to={`/webnovel/${id}`} className="back-arrow">
-          <BackArrowIcon />
-        </Link>
-        <h2 className="chapter-title">{chapterTitle}</h2>
-      </div>
-      <div className="content">
-        {content.map((item, index) => (
-          <div key={index}>
-            {item.type === 'text' ? (
-              splitIntoParagraphs(item.content)
-            ) : (
-              <img src={item.src} alt={`Illustration ${index + 1}`} loading="lazy" />
-            )}
-          </div>
-        ))}
-      </div>
-      <div className="chapter-navigation">
-        {chapterNumber > 1 && (
-          <Link to={`/read/${id}/${chapterNumber - 1}`} className="nav-button prev">
-            Previous Chapter
-          </Link>
-        )}
-        <Link to={`/webnovel/${id}`} className="nav-button home">
-          Home
-        </Link>
-        {chapterNumber < Object.keys(chapterContent).length && (
-          <Link to={`/read/${id}/${chapterNumber + 1}`} className="nav-button next">
-            Next Chapter
-          </Link>
-        )}
-      </div>
+if (location.state && location.state.top) {
+  window.scrollTo(0, 0);
+}
+}, [chapter, location]);
+return (
+  <div className="reading-interface">
+    <div className="chapter-banner">
+      <img src={chapterBanner} alt={chapterTitle} />
+      <Link to={`/webnovel/${id}`} className="back-arrow">
+        <BackArrowIcon />
+      </Link>
+      <h2 className="chapter-title">{chapterTitle}</h2>
     </div>
-  );
+    <div className="content">
+      {content.map((item, index) => (
+        <div key={index}>
+          {item.type === 'text' ? (
+            splitIntoParagraphs(item.content)
+          ) : (
+            <img src={item.src} alt={`Illustration ${index + 1}`} loading="lazy" />
+          )}
+        </div>
+      ))}
+    </div>
+    <div className="chapter-navigation">
+      {chapterNumber > 1 && (
+        <Link to={`/read/${id}/${chapterNumber - 1}`} state={{ top: true }} className="nav-button prev">
+          Previous Chapter
+        </Link>
+      )}
+      <Link to={`/webnovel/${id}`} className="nav-button home">
+        Home
+      </Link>
+      {chapterNumber < Object.keys(chapterContent).length && (
+        <Link to={`/read/${id}/${chapterNumber + 1}`} state={{ top: true }} className="nav-button next">
+          Next Chapter
+        </Link>
+      )}
+    </div>
+  </div>
+);
 }
 
 export default ReadingInterface;
