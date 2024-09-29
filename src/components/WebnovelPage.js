@@ -5,12 +5,12 @@ function WebnovelPage() {
   const { id } = useParams();
   // In a real app, you'd fetch the webnovel data based on the ID
   const webnovel = {
-    title: 'Sample Illustrated Webnovel',
+    title: 'A New Order',
     coverArt: 'https://cdn.midjourney.com/884f0fa1-68fa-42c6-90d3-92f452a551aa/0_0.png',
-    synopsis: 'An exciting journey through a world of beautiful illustrations and lorem ipsum text.',
+    synopsis: 'A boy from the streets of New Tokyo and a girl from the Outer Circle. As their paths cross, what does fate have in store for them?',
     chapters: [
-      { id: 1, title: 'The Beginning', thumbnail: 'https://cdn.midjourney.com/d8636298-53f0-4136-a529-0bdca883d723/0_1.png' },
-      { id: 2, title: 'The Continuation', thumbnail: 'https://cdn.midjourney.com/a7ad33a7-6308-4fb5-863a-d7edc88cb79f/0_0.png' },
+      { id: 1, title: 'The Sky of Death', thumbnail: 'https://cdn.midjourney.com/06ae7116-7ffc-400a-a960-0965120406cb/0_3.png' },
+      { id: 2, title: 'The Prodigy', thumbnail: 'https://cdn.midjourney.com/e7c6ff04-74b3-45f9-b0eb-6db7ceb92721/0_1.png' },
       // Add more chapters as needed
     ],
   };
