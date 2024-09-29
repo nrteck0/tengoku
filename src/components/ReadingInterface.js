@@ -35,7 +35,7 @@ const chapterContent = {
       { type: 'image', src: 'https://cdn.midjourney.com/d72cfc63-7a28-41db-bed9-ba72f8f201cb/0_1.png' },
       { type: 'text', content: `The city came alive at nighttime. After the burning hours, the children go to school, the adults go to work, and the streets begin to flood with people.
 
-The night, however, was different. At 6:00PM sharp, an explosion triggered in Shibuya-01, killing 136 men, women, and children.` },
+That night, however, was different. At 6:00PM sharp, an explosion triggered in Shibuya-01, killing 136 men, women, and children.` },
       { type: 'image', src: 'https://cdn.midjourney.com/ea039c8a-797f-4230-a7c5-10fc5ac5458c/0_0.png' },
     ]
   },
@@ -59,7 +59,7 @@ The man removed his elegant smog goggles. He was clearly someone important. It w
 
 The receptionist went white. One of the Inner Circle was inside their police station? This was unheard of.
 
-"Of course," he stammered, "let me get someone."` },
+"Of course," he stammered, "let me get her."` },
       { type: 'image', src: 'https://cdn.midjourney.com/e7521b78-9eeb-4b80-aee8-84ace17336cc/0_1.png' },
       { type: 'text', content: `"Algan… Terran is here to see you Madam." The receptionist could barely deliver the news.
 
@@ -83,9 +83,9 @@ The receptionist went white. One of the Inner Circle was inside their police sta
 
 "But I don't appreciate when guests come into my house uninvited, making accusations and demands."
 
-The shadows stopped swarming, and the storm stopped gathering. He raised his hand. "I see, Chief Tokozawa has found an interesting apprentice."
+He raised his hand in acknowledgement. "I see, Chief Tokozawa has found an interesting apprentice."
 
-For a moment, he sensed danger. *This girl has an untamed power.*
+For a moment, he sensed danger. This girl has an untamed power.
 
 "136 people are dead. A note was left behind with this seal, and an organization called Shinigami is claiming responsibility." He sighed. "Eliminate them."` },
       { type: 'image', src: 'https://cdn.midjourney.com/03156334-2801-470b-9dc9-dda70750109b/0_2.png' },
