@@ -10,6 +10,7 @@ function App() {
         <Routes>
           <Route path="/webnovel/:id" element={<WebnovelPage />} />
           <Route path="/read/:id/:chapter" element={<ReadingInterface />} />
+          <Route path="/" element={<Home />} />
           {/* Add more routes here as we expand the app */}
         </Routes>
       </div>
