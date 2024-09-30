@@ -1,7 +1,7 @@
 {
   "name": "webnovel-reader",
   "version": "0.1.0",
-  "homepage": "http://tengoku.io",
+  "homepage": "https://tengoku.io",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
