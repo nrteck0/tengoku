@@ -53,7 +53,7 @@ The receptionist gave him an amused look. He had seen many people come into the 
 
 "Sorry sir, the Chief is very busy right now, there's been an explosion downtown—"
 
-The man removed his elegant smog goggles. He was clearly someone important. It wasn't easy to manufacture such thin, aesthetically pleasing goggles that can also protect from the smog. They must have cost a fortune.
+The man removed his elegant smog goggles. He was clearly someone important. It wasn't easy to manufacture such aesthetically pleasing goggles that can also protect from the smog. They must have cost a fortune.
 
 "My name is Algan Terran, the right hand of the King."
 
@@ -67,7 +67,7 @@ The receptionist went white. One of the Inner Circle was inside their police sta
 
 "Let him in," she waved.
 
-"Where is the Deputy Chief of New Tokyo Police?" Terran looked annoyed. He didn't know why this girl was sitting in the Deputy Chief's chair, but he didn't have any time to waste. 136 citizens were dead, and a shadow organization had declared war against the Circle. He had heard that Chief Tokozawa was on leave, and that the Deputy Chief was new blood. But to leave his post unstaffed?
+"Where is the Deputy Chief?" Terran looked annoyed. He didn't know why this girl was sitting in the Deputy Chief's chair, but he didn't have any time to waste. 136 citizens of New Tokyo were dead, and a shadow organization had declared war against the Circles. He had heard that Chief Tokozawa was on leave, and that the Deputy Chief was new blood. But to leave his post unstaffed?
 
 "I'm right here," she looked bored. Men always underestimated her.
 
@@ -85,7 +85,7 @@ The receptionist went white. One of the Inner Circle was inside their police sta
 
 He raised his hand in acknowledgement. "I see, Chief Tokozawa has found an interesting apprentice."
 
-For a moment, he sensed danger. This girl has an untamed power.
+For a moment, he sensed danger. This girl has an unfathomable power.
 
 "136 people are dead. A note was left behind with this seal, and an organization called Shinigami is claiming responsibility." He sighed. "Eliminate them."` },
       { type: 'image', src: 'https://cdn.midjourney.com/03156334-2801-470b-9dc9-dda70750109b/0_2.png' },
