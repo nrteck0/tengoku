@@ -3,6 +3,13 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import WebnovelPage from './components/WebnovelPage';
 import ReadingInterface from './components/ReadingInterface';
 
+const Home = () => (
+  <div>
+    <h1>Welcome to Tengoku</h1>
+    <p>Browse our collection of webnovels.</p>
+  </div>
+);
+
 function App() {
   return (
     <Router>
