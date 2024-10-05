@@ -9,6 +9,14 @@ body {
   color: #ffffff;
 }
 
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #1a1a1a;
+}
+
 /* Smooth scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -40,7 +48,6 @@ body {
   width: 100%;
   height: 200px;
   overflow: hidden;
-  margin: -20px -20px 20px -20px;
 }
 
 .chapter-banner img {
@@ -281,23 +288,30 @@ html {
 }
 
 .home-page {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .chapter-banner.homepage-banner {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: auto;
+  padding-top: 33.33%; /* This sets an aspect ratio of 3:1. Adjust as needed */
   overflow: hidden;
-  margin: -20px -20px 20px -20px;
+  margin-bottom: 20px;
 }
 
 .chapter-banner.homepage-banner img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
 }
 
 .chapter-banner.homepage-banner::after {
@@ -307,20 +321,21 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, .3);
+  background: rgba(0, 0, 0, .1);
 }
 
 .site-title {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: #ffffff;
   text-align: center;
   z-index: 2;
   margin: 0;
-  font-size: 3rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 4rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  width: 100%;
 }
 
 .homepage-banner {
@@ -340,6 +355,7 @@ html {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
+  padding: 0 20px;
 }
 
 .webnovel-tile {
@@ -398,16 +414,20 @@ html {
   .webnovel-grid {
     grid-template-columns: repeat(4, 1fr);
   }
+  .chapter-banner.homepage-banner {
+    padding-top: 40%; /* Slightly taller on medium screens */
+  }
 }
 
 @media (max-width: 768px) {
   .webnovel-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
   }
 }
 
 .chapter-banner.homepage-banner {
-  height: 300px;
+  padding-top: 50%;
 }
 
 .site-title {
@@ -417,5 +437,14 @@ html {
 @media (max-width: 480px) {
   .webnovel-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .chapter-banner.homepage-banner {
+    padding-top: 66.67%;
+  }
+  
+  .site-title {
+    font-size: 2.5rem;
   }
 }

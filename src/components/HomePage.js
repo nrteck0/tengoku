@@ -26,7 +26,10 @@ function HomePage() {
   return (
     <div className="home-page">
       <div className="chapter-banner homepage-banner">
-        <img src="https://cdn.midjourney.com/7ae18878-702b-496a-b551-19c1a8e01ffd/0_3.png" alt="Tengoku Banner" />
+        <img 
+          src="https://cdn.midjourney.com/c8a1631a-e326-43ca-bd5c-d21dab8c97b6/0_2.png" 
+          alt="Tengoku Banner" 
+        />
         <h1 className="site-title">Tengoku</h1>
       </div>
       <div className="webnovel-grid">
