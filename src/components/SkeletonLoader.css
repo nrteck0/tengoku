@@ -1,0 +1,39 @@
+.skeleton-chapter, .skeleton-image {
+  background-color: #f0f0f0;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton-chapter {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.skeleton-banner {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.skeleton-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skeleton-text {
+  height: 20px;
+  width: 100%;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 300px;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

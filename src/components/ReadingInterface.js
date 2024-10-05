@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 
 function BackArrowIcon() {
@@ -9,14 +9,29 @@ function BackArrowIcon() {
   );
 }
 
-// Helper function to split text into paragraphs
 function splitIntoParagraphs(text) {
   return text.split('\n\n').map((paragraph, index) => (
     <p key={index} className="chapter-text">{paragraph}</p>
   ));
 }
 
-const chapterContent = {
+function ImageWithSkeleton({ src, alt, className }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className={`image-container ${className}`}>
+      {!isLoaded && <div className="image-skeleton"></div>}
+      <img
+        src={src}
+        alt={alt}
+        onLoad={() => setIsLoaded(true)}
+        style={{ display: isLoaded ? 'block' : 'none' }}
+      />
+    </div>
+  );
+}
+
+const staticChapterContent = {
   1: {
     title: 'The Sky of Death',
     thumbnail: 'https://cdn.midjourney.com/06ae7116-7ffc-400a-a960-0965120406cb/0_3.png',
@@ -95,58 +110,80 @@ For a moment, he sensed danger. This girl has an unfathomable power.
 
 function ReadingInterface() {
   const { id, chapter } = useParams();
-  const [content, setContent] = useState([]);
-  const [chapterTitle, setChapterTitle] = useState('');
-  const [chapterBanner, setChapterBanner] = useState('');
+  const [content, setContent] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const chapterNumber = parseInt(chapter, 10);
   const location = useLocation();
 
+  const fetchChapterContent = useCallback(async () => {
+    const cachedContent = localStorage.getItem(`chapter_${id}_${chapter}`);
+    if (cachedContent) {
+      return JSON.parse(cachedContent);
+    }
+
+    // Simulating API call
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const chapterData = staticChapterContent[chapter] || { title: 'Chapter Not Found', content: [], banner: '' };
+        localStorage.setItem(`chapter_${id}_${chapter}`, JSON.stringify(chapterData));
+        resolve(chapterData);
+      }, 1000);
+    });
+  }, [id, chapter]);
+
   useEffect(() => {
-    const chapterData = chapterContent[chapter] || { title: 'Chapter Not Found', content: [], banner: '' };
-    setChapterTitle(chapterData.title);
-    setContent(chapterData.content);
-    setChapterBanner(chapterData.banner || chapterData.thumbnail);
-if (location.state && location.state.top) {
-  window.scrollTo(0, 0);
-}
-}, [chapter, location]);
-return (
-  <div className="reading-interface">
-    <div className="chapter-banner">
-      <img src={chapterBanner} alt={chapterTitle} />
-      <Link to={`/webnovel/${id}`} className="back-arrow">
-        <BackArrowIcon />
-      </Link>
-      <h2 className="chapter-title">{chapterTitle}</h2>
-    </div>
-    <div className="content">
-      {content.map((item, index) => (
-        <div key={index}>
-          {item.type === 'text' ? (
-            splitIntoParagraphs(item.content)
-          ) : (
-            <img src={item.src} alt={`Illustration ${index + 1}`} loading="lazy" />
-          )}
-        </div>
-      ))}
-    </div>
-    <div className="chapter-navigation">
-      {chapterNumber > 1 && (
-        <Link to={`/read/${id}/${chapterNumber - 1}`} state={{ top: true }} className="nav-button prev">
-          Previous Chapter
+    setIsLoading(true);
+    fetchChapterContent().then((chapterData) => {
+      setContent(chapterData);
+      setIsLoading(false);
+      if (location.state && location.state.top) {
+        window.scrollTo(0, 0);
+      }
+    });
+  }, [fetchChapterContent, location]);
+
+  if (isLoading || !content) {
+    return <div className="loading">Loading...</div>;
+  }
+
+  return (
+    <div className="reading-interface">
+      <div className="chapter-banner">
+        <ImageWithSkeleton src={content.banner} alt={content.title} className="banner-image" />
+        <Link to={`/webnovel/${id}`} className="back-arrow">
+          <BackArrowIcon />
         </Link>
-      )}
-      <Link to={`/webnovel/${id}`} className="nav-button home">
-        Home
-      </Link>
-      {chapterNumber < Object.keys(chapterContent).length && (
-        <Link to={`/read/${id}/${chapterNumber + 1}`} state={{ top: true }} className="nav-button next">
-          Next Chapter
+        <h2 className="chapter-title">{content.title}</h2>
+      </div>
+      <div className="content">
+        {content.content.map((item, index) => (
+          <div key={index} className="content-item">
+            {item.type === 'text' ? (
+              splitIntoParagraphs(item.content)
+            ) : (
+              <ImageWithSkeleton src={item.src} alt={`Illustration ${index + 1}`} className="content-image" />
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="chapter-navigation">
+        {chapterNumber > 1 && (
+          <Link to={`/read/${id}/${chapterNumber - 1}`} state={{ top: true }} className="nav-button prev">
+            Previous Chapter
+          </Link>
+        )}
+        <Link to={`/webnovel/${id}`} className="nav-button home">
+          Home
         </Link>
-      )}
+        {chapterNumber < Object.keys(staticChapterContent).length && (
+          <Link to={`/read/${id}/${chapterNumber + 1}`} state={{ top: true }} className="nav-button next">
+            Next Chapter
+          </Link>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default ReadingInterface;
+
