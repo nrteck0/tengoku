@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const WebnovelTile = ({ title, coverArt, synopsis }) => (
   <div className="webnovel-tile">
@@ -14,6 +14,13 @@ const WebnovelTile = ({ title, coverArt, synopsis }) => (
 );
 
 function HomePage() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('currentUser');
+    navigate('/');
+  };
+
   const dummyWebnovel = {
     id: 1,
     title: 'The New Order',
@@ -26,9 +33,10 @@ function HomePage() {
   return (
     <div className="home-page">
       <div className="chapter-banner homepage-banner">
-        <img src="https://cdn.midjourney.com/c8a1631a-e326-43ca-bd5c-d21dab8c97b6/0_2.png" 
-          alt="Tengoku Banner" 
+        <img src="https://cdn.midjourney.com/c8a1631a-e326-43ca-bd5c-d21dab8c97b6/0_2.png"
+          alt="Tengoku Banner"
         />
+        <button className="btn logout-button" onClick={handleLogout}>Log Out</button>
         <div className="banner-content">
         <h1 className="site-title">Tengoku</h1>
         <p className="site-subtitle">Find your next favorite manga, webcomic or webnovel</p>
