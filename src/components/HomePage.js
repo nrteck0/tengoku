@@ -37,6 +37,7 @@ function HomePage() {
           alt="Tengoku Banner"
         />
         <button className="btn logout-button" onClick={handleLogout}>Log Out</button>
+        <Link to="/register" className="btn signup-button">Sign Up</Link>
         <div className="banner-content">
         <h1 className="site-title">Tengoku</h1>
         <p className="site-subtitle">Find your next favorite manga, webcomic or webnovel</p>

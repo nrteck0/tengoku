@@ -504,6 +504,11 @@ html {
   top: 20px;
   right: 20px;
 }
+.signup-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
 .genre-list {
   display: flex;
   flex-direction: column;
