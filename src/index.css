@@ -498,6 +498,12 @@ html {
 .btn.social {
   background: #555;
 }
+
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
 .genre-list {
   display: flex;
   flex-direction: column;
